@@ -103,7 +103,8 @@ class App extends Component {
         turns: turns,
         hits: 0,
         errors: 0,
-        acurate: 0
+        acurate: 0,
+        correctChar: ''
       })
     }
   }
