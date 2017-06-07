@@ -19,7 +19,7 @@ var style = {
   success:{
     backgroundColor: 'black',
     color: 'green',
-    padding: '2px',
+    padding: '4px',
     margin: 0,
     textAlign: 'center'
   },
@@ -64,18 +64,18 @@ class Main extends Component{
   }
 
   render(){
-    var colorChar = this.props.color.color
+    var colorChar = this.props.color
     var indexS = this.props.index
     var str = this.state.string.split('')
     var letterByLetter = str.map(function(current,index,str){
       return(
-        <span style={(indexS === index)? {color: colorChar}:{color:''}} key={index}>{(current === ' ')? '_': current}</span>
+        <span style={(indexS === index)? colorChar : {color:''}} key={index}>{(current === ' ')? '_': current}</span>
       )
     })
     return(
       <main style={style}>
         <div className="MainString">
-          <p style={style.p}>><p style={{width: 5}}> </p>{(this.state.string === '')? '': letterByLetter}</p>
+          <p style={style.p}>><b style={{width: 5}}> </b>{(this.state.string === '')? '': letterByLetter}</p>
         </div>
       </main>
     )

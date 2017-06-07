@@ -4,12 +4,14 @@ import Keyboard from './components/keyboard/keyboard';
 import Header from './components/header/header';
 import Main from './components/main/main';
 import Footer from './components/footer/footer';
+import Modal from './components/modal/modal';
 
 class App extends Component {
   constructor(props){
     super(props)
     this.readFile =  this.readFile.bind(this);
     this.onKey = this.onKey.bind(this);
+    this.onClose = this.onClose.bind(this);
     this.state = {
       string: '',
       turns: 0,
@@ -17,10 +19,11 @@ class App extends Component {
       hits: 0,
       errors: 0,
       index: 0,
-      colorCorrect: {color: 'green'},
+      colorCorrect: { color: 'green'},
       status: "",
       acurateColor: 'red',
-      correctChar: ''
+      correctChar: '',
+      modal: ''
     }
   }
   readFile(event){
@@ -34,8 +37,6 @@ class App extends Component {
           status: "true"
       })
     }
-  }
-  componentWillMount(){
     document.addEventListener("keypress",this.onKey)
   }
   onKey(event){
@@ -67,7 +68,7 @@ class App extends Component {
     }
     //calculated the acurate
     let acerts = this.state.hits
-    let percent = acerts * 100 / this.state.string.length
+    let percent = (acerts > 0)? acerts * 100 / this.state.string.length : 0
     this.setState({
       acurate: parseInt(percent,0)
     })
@@ -91,11 +92,14 @@ class App extends Component {
     }
     //rewind the iterator for repeat the string
     if (i === this.state.string.length) {
-      if (this.state.acurate === 100) {
-        alert('WOAH Your skills in the keyboard are ON FIRE! \n You have a PERFECT ACURATE!' + this.state.acurate + ' %')
-      }else {
-        alert('Your SCORE is Hits: ' + this.state.hits + ' Errors: ' + this.state.errors + ' Acurate: ' + this.state.acurate+'%')
-      }
+      this.setState({
+        modal: <Modal hits={this.state.hits} errors={this.state.errors} acurate={this.state.acurate} close={this.onClose}/>
+      })
+      // if (this.state.acurate === 100) {
+      //   alert('WOAH Your skills in the keyboard are ON FIRE! \n You have a PERFECT ACURATE!' + this.state.acurate + ' %')
+      // }else {
+      //   alert('Your SCORE is Hits: ' + this.state.hits + ' Errors: ' + this.state.errors + ' Acurate: ' + this.state.acurate+'%')
+      // }
       let turns = this.state.turns
       turns++
       this.setState({
@@ -108,10 +112,15 @@ class App extends Component {
       })
     }
   }
+  onClose(){
+    this.setState({
+      modal: ''
+    })
+  }
   render() {
-    console.log(this.state)
     return (
       <div className="App">
+        {this.state.modal}
         <Header turns={this.state.turns} acurate={this.state.acurate} hits={this.state.hits} errors={this.state.errors} color={this.state.acurateColor}/>
         <Main string={this.state.string} index={this.state.index} color={this.state.colorCorrect}/>
         <Keyboard onPress={this.state.correctChar}/>

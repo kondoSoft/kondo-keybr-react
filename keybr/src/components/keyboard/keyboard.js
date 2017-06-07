@@ -18,7 +18,6 @@ var style = {
 
 class Keyboard extends Component {
   render(){
-    console.log(this.props)
     return(
       <div className="keyboard" style={style}>
         <FirstRow/>
