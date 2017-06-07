@@ -95,11 +95,7 @@ class App extends Component {
       this.setState({
         modal: <Modal hits={this.state.hits} errors={this.state.errors} acurate={this.state.acurate} close={this.onClose}/>
       })
-      // if (this.state.acurate === 100) {
-      //   alert('WOAH Your skills in the keyboard are ON FIRE! \n You have a PERFECT ACURATE!' + this.state.acurate + ' %')
-      // }else {
-      //   alert('Your SCORE is Hits: ' + this.state.hits + ' Errors: ' + this.state.errors + ' Acurate: ' + this.state.acurate+'%')
-      // }
+      document.removeEventListener("keypress",this.onKey)
       let turns = this.state.turns
       turns++
       this.setState({
@@ -116,8 +112,10 @@ class App extends Component {
     this.setState({
       modal: ''
     })
+    document.addEventListener("keypress",this.onKey)
   }
   render() {
+    console.log(localStorage.getItem('str'));
     return (
       <div className="App">
         {this.state.modal}

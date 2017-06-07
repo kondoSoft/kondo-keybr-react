@@ -4,3 +4,12 @@ body{
 .keyboard{
   background-color: #fff;
 }
+.mainModal{
+  font-family: 'Press Start 2P';
+}
+.main{
+  font-family: 'Press Start 2P';
+}
+.mainFooter button{
+  font-family: 'Press Start 2P';
+}
