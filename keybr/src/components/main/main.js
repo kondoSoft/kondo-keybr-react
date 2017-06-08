@@ -7,7 +7,7 @@ var style = {
   p:{
     display: 'flex',
     flexFlow: 'row wrap',
-    fontSize: '17px',
+    fontSize: '13px',
     letterSpacing: '1px',
     backgroundColor: 'black',
     color: '#fff',
@@ -73,7 +73,7 @@ class Main extends Component{
       )
     })
     return(
-      <main style={style}>
+      <main style={style} className="main">
         <div className="MainString">
           <p style={style.p}>><b style={{width: 5}}> </b>{(this.state.string === '')? '': letterByLetter}</p>
         </div>
