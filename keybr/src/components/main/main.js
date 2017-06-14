@@ -1,9 +1,10 @@
-import React,{Component} from 'react';
+import React,{Component} from 'react'
+import PropTypes from 'prop-types'
 
-var chain
 var style = {
   width: '60vw',
   height: '25vh',
+  marginBottom: '80px',
   p:{
     display: 'flex',
     flexFlow: 'row wrap',
@@ -12,7 +13,7 @@ var style = {
     backgroundColor: 'black',
     color: '#fff',
     padding: 10,
-    height: '120px',
+    height: '250px',
     borderRadius: 5,
     border: '1px solid #fff'
   },
@@ -35,38 +36,24 @@ class Main extends Component{
   constructor(){
     super()
     this.state = {
-      string: '',
+      str: '',
       newString: '',
       correctChar: '',
-      i: 0
+      i: 0,
+      indexInicial: 0,
+      indexFinal: 61
     }
   }
   componentWillReceiveProps(nextProps){
-    if (nextProps.string === '') {
-      this.setState({
-        string: 'Upload a file for practice your keyboard skills'
-      })
-    }
-    else{
-      chain = nextProps.string
-      if (nextProps.string.length > 300) {
-        var maxLength = nextProps.string
-        this.setState({
-          string: maxLength.substring(0,301)
-        })
-      }
-      else {
-        this.setState({
-          string: chain
-        })
-      }
-    }
+    this.setState({
+      str: nextProps.string
+    })
   }
-
   render(){
+    console.log('index en el componente main',this.props.index);
     var colorChar = this.props.color
     var indexS = this.props.index
-    var str = this.state.string.split('')
+    var str = this.state.str.split('')
     var letterByLetter = str.map(function(current,index,str){
       return(
         <span style={(indexS === index)? colorChar : {color:''}} key={index}>{(current === ' ')? '_': current}</span>
@@ -81,5 +68,9 @@ class Main extends Component{
     )
   }
 }
-
+Main.propTypes = {
+  string: PropTypes.string.isRequired,
+  index: PropTypes.number,
+  color: PropTypes.object
+}
 export default Main;

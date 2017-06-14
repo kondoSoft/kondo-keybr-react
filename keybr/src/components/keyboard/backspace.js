@@ -4,7 +4,7 @@ var style = {
   backgroundColor: 'black',
   color: '#fff',
   width: '15%',
-  height: '6vh',
+  height: '4vh',
   fontSize: '14px',
   padding: '7px',
   textAlign: 'center',

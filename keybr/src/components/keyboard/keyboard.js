@@ -7,7 +7,7 @@ import FiveRow from './five-row';
 
 
 var style = {
-  width: '80%',
+  width: 900,
   display: 'flex',
   padding: '10px',
   flexFlow: 'column wrap',
