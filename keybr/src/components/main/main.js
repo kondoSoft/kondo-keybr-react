@@ -2,14 +2,11 @@ import React,{Component} from 'react'
 import PropTypes from 'prop-types'
 
 var style = {
-  width: '60vw',
-  height: '25vh',
-  marginBottom: '80px',
   p:{
     display: 'flex',
     flexFlow: 'row wrap',
-    fontSize: '13px',
-    letterSpacing: '1px',
+    fontSize: 18,
+    letterSpacing: '5px',
     backgroundColor: 'black',
     color: '#fff',
     padding: 10,
@@ -50,7 +47,6 @@ class Main extends Component{
     })
   }
   render(){
-    console.log('index en el componente main',this.props.index);
     var colorChar = this.props.color
     var indexS = this.props.index
     var str = this.state.str.split('')

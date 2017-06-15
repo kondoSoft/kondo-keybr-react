@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 var style = {
-  width: '10%',
+  width: 70,
   height: '4vh',
   padding: '6px',
   textAlign: 'center',

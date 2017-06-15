@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 
 var style = {
-  width: '4%',
-  height: '65%',
+  width: 38,
+  height: 36,
   padding: '7px',
   textAlign: 'center',
   backgroundColor: 'black',
@@ -14,8 +14,8 @@ var style = {
   }
 }
 var correctKey = {
-  width: '4%',
-  height: '65%',
+  width: 38,
+  height: 36,
   padding: '7px',
   textAlign: 'center',
   backgroundColor: 'lightgray',

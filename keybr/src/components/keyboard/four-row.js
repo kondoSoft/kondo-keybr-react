@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import '../../App.css';
 import SingleKey from './single-key';
 import LetterKey from './letter-key';
 import Shift from './shift';
@@ -50,18 +51,10 @@ var RowObj = {
     }
 };
 
-var style = {
-  display: 'flex',
-  width: '100%',
-  justifyContent: 'center',
-  alignItems: 'center',
-  margin: '5px 0px',
-}
-
 class FourRow extends Component {
   render(){
     return(
-        <div style={style}>
+        <div className="four-row">
           <Shift topVal={RowObj.one.top}/>
           <LetterKey onPress={this.props.onPress} topVal={RowObj.two.top}/>
           <LetterKey onPress={this.props.onPress} topVal={RowObj.tree.top}/>

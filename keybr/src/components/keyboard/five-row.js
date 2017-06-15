@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import '../../App.css';
 import LetterKey from './letter-key';
 import Tab from './tab';
 import Space from './space';
@@ -31,18 +32,11 @@ var RowObj = {
     },
 };
 
-var style = {
-  display: 'flex',
-  width: '100%',
-  justifyContent: 'center',
-  alignItems: 'center',
-  margin: '5px 0px',
-}
 
 class FiveRow extends Component{
   render(){
     return(
-      <div style={style}>
+      <div className="five-row">
         <Tab topVal={RowObj.one.top}/>
         <LetterKey topVal={RowObj.tree.top}/>
         <LetterKey topVal={RowObj.four.top}/>

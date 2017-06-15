@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 
 
 var style = {
-  width: '14%',
+  width: 179,
   height: '4vh',
   padding: '6px',
   textAlign: 'center',
