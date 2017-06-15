@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 var style = {
-  width: '4%',
+  width: 35,
   height: '4vh',
   padding: '7px',
   textAlign: 'center',
@@ -18,7 +18,7 @@ var style = {
   }
 }
 const correctKey = {
-  width: '4%',
+  width: 35,
   height: '4vh',
   padding: '7px',
   textAlign: 'center',

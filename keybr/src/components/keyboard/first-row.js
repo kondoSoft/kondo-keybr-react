@@ -1,4 +1,5 @@
 import React,{Component} from 'react';
+import '../../App.css';
 import SingleKey from './single-key';
 import Backspace from './backspace';
 
@@ -60,18 +61,10 @@ var RowObj = {
     }
 };
 
-var style = {
-  display: 'flex',
-  width: '100%',
-  justifyContent: 'center',
-  alignItems: 'center',
-  margin: '5px 0px',
-}
-
 class FirstRow extends Component {
   render(){
     return(
-      <div style={style}>
+      <div className="first-row">
         <SingleKey topVal={RowObj.one.top} bottVal={RowObj.one.bottom}/>
         <SingleKey topVal={RowObj.two.top} bottVal={RowObj.two.bottom}/>
         <SingleKey topVal={RowObj.tree.top} bottVal={RowObj.tree.bottom}/>

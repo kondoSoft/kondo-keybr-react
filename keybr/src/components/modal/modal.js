@@ -14,7 +14,7 @@ var style = {
   border: '4px solid yellow',
   padding: 5,
   header: {
-    fontSize: 18,
+    fontSize: 28,
     textAlign: 'center',
   },
   body:{
@@ -24,7 +24,7 @@ var style = {
     justifyContent: 'space-around',
     li:{
       listStyle: 'none',
-      fontSize: 12,
+      fontSize: 22,
     },
   },
   footer:{
@@ -33,7 +33,7 @@ var style = {
     btn:{
       width: '100px',
       padding: 10,
-      fontSize: 10,
+      fontSize: 16,
       border: 'none',
       backgroundColor: 'black',
       color: '#fff',
