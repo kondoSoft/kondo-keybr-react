@@ -20,6 +20,7 @@ class App extends Component {
       acurate: 0,
       hits: 0,
       errors: 0,
+      lastError: 0,
       index: 0,
       indexG: 0,
       colorCorrect: { color: 'green'},
@@ -64,32 +65,55 @@ class App extends Component {
       var keyPress = event.key
       var incHits = this.state.hits
       var incErrors = this.state.errors
-      var totalHits = this.state.total
-      if (keyPress === this.state.limitString[i]) {
-        i++
-        inG++
-        incHits++
-        totalHits--
-        this.setState({
-          hits: incHits,
-          currentKey: this.state.limitString[i],
-          index: i,
-          indexG: inG,
-          colorCorrect: {color: 'green'},
-          correctChar: keyPress,
-          total: totalHits
-        })
+      var lastError = this.state.lastError
+      if (keyPress === this.state.limitString[i]){
+        if (incErrors > this.state.lastError) {
+          i++
+          inG++
+          lastError++
+          this.setState({
+            currentKey: this.state.limitString[i],
+            hits: incHits,
+            index: i,
+            indexG: inG,
+            colorCorrect: {color: 'green'},
+            correctChar: keyPress,
+            lastError: lastError
+          })
+        }
+        else {
+            i++
+            inG++
+            incHits++
+            this.setState({
+              hits: incHits,
+              index: i,
+              indexG: inG,
+              currentKey: this.state.limitString[i],
+              colorCorrect: {color: 'green'},
+              correctChar: keyPress
+            })
+        }
       }
       else {
-        incErrors++
-        incHits--
-        this.setState({
-          hits: incHits,
-          errors: incErrors,
-          colorCorrect: {color: 'red'},
-          total: totalHits
-        })
+        if (incErrors === lastError) {
+          incErrors++
+          this.setState({
+            errors: incErrors,
+            colorCorrect: {color: 'red'}
+          })
+        }
+        else {
+          console.log(incErrors)
+          this.setState({
+            errors: incErrors,
+            colorCorrect: {color: 'red'}
+          })
+        }
       }
+      console.log('hits>>',this.state.hits)
+      console.log('Errors>>',this.state.errors)
+      console.log('Last Error>>',this.state.lastError)
     }
     //calculated the acurate
     let acerts = this.state.hits
@@ -140,6 +164,7 @@ class App extends Component {
         turns: turns,
         hits: 0,
         errors: 0,
+        lastError: 0,
         acurate: 0,
         index: 0,
         indexG: 0,
@@ -157,7 +182,6 @@ class App extends Component {
     document.addEventListener("keypress",this.onKey)
   }
   render() {
-    console.log('index al momento>>>>',this.state.index)
     return (
       <div className="App">
         {this.state.modal}
