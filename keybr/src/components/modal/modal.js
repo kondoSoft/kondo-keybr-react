@@ -51,9 +51,9 @@ export default class Modal extends Component {
           <h4>YOUR SCORE</h4>
         </div>
         <div className="mainBody" style={style.body}>
-          <li style={style.body.li}><b>Hits: {this.props.hits}</b></li>
+          <li style={style.body.li}><b>Hits: {(this.props.hits < 0)? 0:this.props.hits}</b></li>
           <li style={style.body.li}><b>Errors: {this.props.errors}</b></li>
-          <li style={style.body.li}><b>Acurate: {this.props.acurate}%</b></li>
+          <li style={style.body.li}><b>Acurate: {(this.props.acurate < 0)? 0:this.props.acurate}%</b></li>
         </div>
         <div className="mainFooter">
           <button style={style.footer.btn} onClick={this.props.close}>Continue</button>
