@@ -5,7 +5,7 @@ var style = {
   p:{
     display: 'flex',
     flexFlow: 'row wrap',
-    fontSize: 18,
+    fontSize: 16,
     letterSpacing: '5px',
     backgroundColor: 'black',
     color: '#fff',
@@ -52,9 +52,10 @@ class Main extends Component{
     var str = this.state.str.split('')
     var letterByLetter = str.map(function(current,index,str){
       return(
-        <span style={(indexS === index)? colorChar : {color:''}} key={index}>{(current === ' ')? '_': current}</span>
+        <span style={(indexS === index)? colorChar : {color:''}} key={index}>{(current === ' ')? '␣': current }</span>
       )
     })
+    console.log(letterByLetter)
     return(
       <main style={style} className="main">
         <div className="MainString">

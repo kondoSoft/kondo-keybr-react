@@ -11,7 +11,7 @@ class Keyboard extends Component {
   render(){
     return(
       <div className="keyboard">
-        <FirstRow/>
+        <FirstRow onPress={this.props.onPress}/>
         <SecondRow onPress={this.props.onPress}/>
         <ThirdRow onPress={this.props.onPress}/>
         <FourRow onPress={this.props.onPress}/>

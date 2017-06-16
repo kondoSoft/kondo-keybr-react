@@ -81,7 +81,7 @@ class ThirdRow extends Component{
         <LetterKey onPress={this.props.onPress} topVal={RowObj.ten.top}/>
         <SingleKey topVal={RowObj.eleven.top} bottVal={RowObj.eleven.bottom}/>
         <SingleKey topVal={RowObj.twelve.top} bottVal={RowObj.twelve.bottom}/>
-        <Enter topVal={RowObj.thirteen.top}/>
+        <Enter onPress={this.props.onPress} topVal={RowObj.thirteen.top}/>
       </div>
     )
   }

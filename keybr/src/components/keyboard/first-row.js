@@ -65,19 +65,19 @@ class FirstRow extends Component {
   render(){
     return(
       <div className="first-row">
-        <SingleKey topVal={RowObj.one.top} bottVal={RowObj.one.bottom}/>
-        <SingleKey topVal={RowObj.two.top} bottVal={RowObj.two.bottom}/>
-        <SingleKey topVal={RowObj.tree.top} bottVal={RowObj.tree.bottom}/>
-        <SingleKey topVal={RowObj.four.top} bottVal={RowObj.four.bottom}/>
-        <SingleKey topVal={RowObj.five.top} bottVal={RowObj.five.bottom}/>
-        <SingleKey topVal={RowObj.six.top} bottVal={RowObj.six.bottom}/>
-        <SingleKey topVal={RowObj.seven.top} bottVal={RowObj.seven.bottom}/>
-        <SingleKey topVal={RowObj.eight.top} bottVal={RowObj.eight.bottom}/>
-        <SingleKey topVal={RowObj.nine.top} bottVal={RowObj.nine.bottom}/>
-        <SingleKey topVal={RowObj.ten.top} bottVal={RowObj.ten.bottom}/>
-        <SingleKey topVal={RowObj.eleven.top} bottVal={RowObj.eleven.bottom}/>
-        <SingleKey topVal={RowObj.twelve.top} bottVal={RowObj.twelve.bottom}/>
-        <SingleKey topVal={RowObj.thirteen.top} bottVal={RowObj.thirteen.bottom}/>
+        <SingleKey onPress={this.props.onPress} topVal={RowObj.one.top} bottVal={RowObj.one.bottom}/>
+        <SingleKey onPress={this.props.onPress} topVal={RowObj.two.top} bottVal={RowObj.two.bottom}/>
+        <SingleKey onPress={this.props.onPress} topVal={RowObj.tree.top} bottVal={RowObj.tree.bottom}/>
+        <SingleKey onPress={this.props.onPress} topVal={RowObj.four.top} bottVal={RowObj.four.bottom}/>
+        <SingleKey onPress={this.props.onPress} topVal={RowObj.five.top} bottVal={RowObj.five.bottom}/>
+        <SingleKey onPress={this.props.onPress} topVal={RowObj.six.top} bottVal={RowObj.six.bottom}/>
+        <SingleKey onPress={this.props.onPress} topVal={RowObj.seven.top} bottVal={RowObj.seven.bottom}/>
+        <SingleKey onPress={this.props.onPress} topVal={RowObj.eight.top} bottVal={RowObj.eight.bottom}/>
+        <SingleKey onPress={this.props.onPress} topVal={RowObj.nine.top} bottVal={RowObj.nine.bottom}/>
+        <SingleKey onPress={this.props.onPress} topVal={RowObj.ten.top} bottVal={RowObj.ten.bottom}/>
+        <SingleKey onPress={this.props.onPress} topVal={RowObj.eleven.top} bottVal={RowObj.eleven.bottom}/>
+        <SingleKey onPress={this.props.onPress} topVal={RowObj.twelve.top} bottVal={RowObj.twelve.bottom}/>
+        <SingleKey onPress={this.props.onPress} topVal={RowObj.thirteen.top} bottVal={RowObj.thirteen.bottom}/>
         <Backspace topVal={RowObj.fourteen.top}/>
       </div>
     )
