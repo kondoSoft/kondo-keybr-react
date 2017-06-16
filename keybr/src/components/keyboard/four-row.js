@@ -65,7 +65,7 @@ class FourRow extends Component {
           <LetterKey onPress={this.props.onPress} topVal={RowObj.eight.top}/>
           <SingleKey onPress={this.props.onPress} topVal={RowObj.nine.top} bottVal={RowObj.nine.bottom}/>
           <SingleKey onPress={this.props.onPress} topVal={RowObj.ten.top} bottVal={RowObj.ten.bottom}/>
-          <SingleKey topVal={RowObj.eleven.top} bottVal={RowObj.eleven.bottom}/>
+          <SingleKey onPress={this.props.onPress} topVal={RowObj.eleven.top} bottVal={RowObj.eleven.bottom}/>
           <Shift topVal={RowObj.one.top}/>
         </div>
     )

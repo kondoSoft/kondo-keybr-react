@@ -46,7 +46,7 @@ class App extends Component {
       var fin = this.state.finIndex
       let sub = this.createSubString(ini,fin,txt)
       this.setState({
-        limitString: sub.replace(/\r\n/g,' ')
+        limitString: sub.replace(/\n/g,'↵')
       })
     }
     document.addEventListener("keypress",this.onKey)
@@ -66,7 +66,7 @@ class App extends Component {
       var incHits = this.state.hits
       var incErrors = this.state.errors
       var lastError = this.state.lastError
-      if (keyPress === this.state.limitString[i]){
+      if (keyPress === this.state.limitString[i] || keyPress === 'Enter' && this.state.limitString[i] === '↵'){
         if (incErrors > this.state.lastError) {
           i++
           inG++
@@ -96,6 +96,8 @@ class App extends Component {
         }
       }
       else {
+        console.log(keyPress)
+        console.log(this.state.limitString[i])
         if (incErrors === lastError) {
           incErrors++
           this.setState({
@@ -104,16 +106,12 @@ class App extends Component {
           })
         }
         else {
-          console.log(incErrors)
           this.setState({
             errors: incErrors,
             colorCorrect: {color: 'red'}
           })
         }
       }
-      console.log('hits>>',this.state.hits)
-      console.log('Errors>>',this.state.errors)
-      console.log('Last Error>>',this.state.lastError)
     }
     //calculated the acurate
     let acerts = this.state.hits
@@ -149,7 +147,7 @@ class App extends Component {
       this.setState({
         iniIndex: iniIndex,
         finIndex: finIndex,
-        limitString: sub,
+        limitString: sub.replace(/\n/g,'↵'),
         index: 0
       })
     }
@@ -170,7 +168,7 @@ class App extends Component {
         indexG: 0,
         iniIndex: 0,
         finIndex: 61,
-        limitString: sub,
+        limitString: sub.replace(/\n/g,'↵'),
         correctChar: ''
       })
     }
@@ -182,6 +180,7 @@ class App extends Component {
     document.addEventListener("keypress",this.onKey)
   }
   render() {
+    console.log(this.state.limitString)
     return (
       <div className="App">
         {this.state.modal}

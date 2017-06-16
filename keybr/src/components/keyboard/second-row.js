@@ -77,8 +77,8 @@ class SecondRow extends Component{
         <LetterKey onPress={this.props.onPress} topVal={RowObj.nine.top}/>
         <LetterKey onPress={this.props.onPress} topVal={RowObj.ten.top}/>
         <LetterKey onPress={this.props.onPress} topVal={RowObj.eleven.top}/>
-        <SingleKey topVal={RowObj.twelve.top} bottVal={RowObj.twelve.bottom}/>
-        <SingleKey topVal={RowObj.thirteen.top} bottVal={RowObj.thirteen.bottom}/>
+        <SingleKey onPress={this.props.onPress} topVal={RowObj.twelve.top} bottVal={RowObj.twelve.bottom}/>
+        <SingleKey onPress={this.props.onPress} topVal={RowObj.thirteen.top} bottVal={RowObj.thirteen.bottom}/>
         <Tab topVal={RowObj.fourteen.top}/>
       </div>
     )
