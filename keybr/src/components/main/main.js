@@ -46,6 +46,11 @@ class Main extends Component{
       str: nextProps.string
     })
   }
+  componentDidMount(){
+    this.setState({
+      str: this.props.string
+    })
+  }
   render(){
     var colorChar = this.props.color
     var indexS = this.props.index
@@ -55,7 +60,6 @@ class Main extends Component{
         <span style={(indexS === index)? colorChar : {color:''}} key={index}>{(current === ' ')? '␣': current }</span>
       )
     })
-    console.log(letterByLetter)
     return(
       <main style={style} className="main">
         <div className="MainString">
