@@ -23,7 +23,7 @@ class Header extends Component{
         <div style={style.div}>
           <img src={logo} style={style.img} alt="Hipatia"/>
         </div>
-        <Score turns={this.props.turns} acurate={this.props.acurate} hits={this.props.hits} errors={this.props.errors} color={this.props.color}/>
+        <Score level={this.props.level} acurate={this.props.acurate} hits={this.props.hits} errors={this.props.errors} color={this.props.color}/>
       </header>
     )
   }
