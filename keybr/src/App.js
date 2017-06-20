@@ -3,19 +3,15 @@ import './App.css';
 import Keyboard from './components/keyboard/keyboard';
 import Header from './components/header/header';
 import Main from './components/main/main';
-import Footer from './components/footer/footer';
 import Modal from './components/modal/modal';
 
 class App extends Component {
   constructor(props){
     super(props)
-    this.readFile =  this.readFile.bind(this);
     this.onKey = this.onKey.bind(this);
     this.onClose = this.onClose.bind(this);
-    this.createSubString = this.createSubString.bind(this)
     this.state = {
       string: '',
-      limitString: '',
       turns: 0,
       acurate: 0,
       hits: 0,
@@ -29,50 +25,27 @@ class App extends Component {
       correctChar: '',
       modal: '',
       iniIndex: 0,
-      finIndex: 61
-    }
-  }
-  readFile(event){
-    var file = event.target.files[0];
-    var reader = new FileReader();
-    reader.readAsText(file);
-    reader.onload = () => {
-      var txt = reader.result
-      this.setState({
-          string: txt,
-          status: "true"
-      })
-      var ini = this.state.iniIndex
-      var fin = this.state.finIndex
-      let sub = this.createSubString(ini,fin,txt)
-      this.setState({
-        limitString: sub.replace(/\n/g,'↵')
-      })
-    }
-    document.addEventListener("keypress",this.onKey)
-  }
-  createSubString(initial,final,string){
-    if ( string.length > 61 ) {
-      return string.substring(initial,final)
-    }else {
-      return string
+      finIndex: 61,
+      nExc: 0,
+      excercises: ["hello world","hello python"]
     }
   }
   onKey(event){
     var inG = this.state.indexG
     var i = this.state.index
-    if (inG !== this.state.string.length) {
-      var keyPress = event.key
-      var incHits = this.state.hits
-      var incErrors = this.state.errors
-      var lastError = this.state.lastError
-      if (keyPress === this.state.limitString[i] || keyPress === 'Enter' && this.state.limitString[i] === '↵'){
+    var nExc = this.state.nExc
+    var keyPress = event.key
+    var incHits = this.state.hits
+    var incErrors = this.state.errors
+    var lastError = this.state.lastError
+    if (inG !== this.state.excercises[nExc].length) {
+      if (keyPress === this.state.excercises[nExc][i] || keyPress === 'Enter' && this.state.excercises[nExc][i] === '↵'){
         if (incErrors > this.state.lastError) {
           i++
           inG++
           lastError++
           this.setState({
-            currentKey: this.state.limitString[i],
+            currentKey: this.state.excercises[nExc][i],
             hits: incHits,
             index: i,
             indexG: inG,
@@ -89,15 +62,13 @@ class App extends Component {
               hits: incHits,
               index: i,
               indexG: inG,
-              currentKey: this.state.limitString[i],
+              currentKey: this.state.excercises[nExc][i],
               colorCorrect: {color: 'green'},
               correctChar: keyPress
             })
         }
       }
       else {
-        console.log(keyPress)
-        console.log(this.state.limitString[i])
         if (incErrors === lastError) {
           incErrors++
           this.setState({
@@ -115,7 +86,7 @@ class App extends Component {
     }
     //calculated the acurate
     let acerts = this.state.hits
-    let percent = (acerts > 0)? acerts * 100 / this.state.string.length : 0
+    let percent = (acerts > 0)? acerts * 100 / this.state.excercises[nExc].length : 0
     this.setState({
       acurate: parseInt(percent,0)
     })
@@ -137,26 +108,11 @@ class App extends Component {
         acurateColor: 'green'
       })
     }
-    //rewind the iterator for repeat the string
-    if (i === this.state.limitString.length) {
-      var iniIndex = this.state.iniIndex
-      var finIndex = this.state.finIndex
-      iniIndex += 61
-      finIndex += 61
-      let sub = this.createSubString(iniIndex, finIndex, this.state.string)
-      this.setState({
-        iniIndex: iniIndex,
-        finIndex: finIndex,
-        limitString: sub.replace(/\n/g,'↵'),
-        index: 0
-      })
-    }
-    if (inG === this.state.string.length){
+    if (inG === this.state.excercises[nExc].length){
+      console.log("ESTO SI SUCEDE")
       var turns = this.state.turns
+      nExc++
       turns++
-      let iniIndex = 0
-      let finIndex = 61
-      let sub = this.createSubString(iniIndex, finIndex, this.state.string)
       this.setState({
         modal: <Modal hits={this.state.hits} errors={this.state.errors} acurate={this.state.acurate} close={this.onClose}/>,
         turns: turns,
@@ -166,13 +122,18 @@ class App extends Component {
         acurate: 0,
         index: 0,
         indexG: 0,
-        iniIndex: 0,
-        finIndex: 61,
-        limitString: sub.replace(/\n/g,'↵'),
-        correctChar: ''
+        correctChar: '',
+        nExc: nExc
       })
     }
   }
+  // componentWillUpdate(nextProps,nextState){
+  //   if (nextState.nExc === this.state.excercises.length) {
+  //     this.setState({
+  //       nExc: 0
+  //     })
+  //   }
+  // }
   onClose(){
     this.setState({
       modal: ''
@@ -180,14 +141,14 @@ class App extends Component {
     document.addEventListener("keypress",this.onKey)
   }
   render() {
-    console.log(this.state.limitString)
+    document.addEventListener("keypress",this.onKey)
+    let nExc = this.state.nExc
     return (
       <div className="App">
         {this.state.modal}
         <Header turns={this.state.turns} acurate={this.state.acurate} hits={this.state.hits} errors={this.state.errors} color={this.state.acurateColor}/>
-        <Main string={this.state.limitString} index={this.state.index} color={this.state.colorCorrect}/>
+        <Main string={this.state.excercises[nExc]} index={this.state.index} color={this.state.colorCorrect}/>
         <Keyboard onPress={this.state.correctChar}/>
-        <Footer readfile={this.readFile} status={this.state.status}/>
       </div>
     );
   }
