@@ -41,14 +41,14 @@ class Main extends Component{
       indexFinal: 61
     }
   }
+  componentDidMount(){
+    this.setState({
+        str: this.props.string
+      })
+  }
   componentWillReceiveProps(nextProps){
     this.setState({
       str: nextProps.string
-    })
-  }
-  componentDidMount(){
-    this.setState({
-      str: this.props.string
     })
   }
   render(){
